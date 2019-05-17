@@ -51,16 +51,18 @@ namespace Desktop
 
 			RelayCommand<object> changeContextCommand = new RelayCommand<object>(changeContext, args => true);
 			RelayCommand<object> changeViewCommand = new RelayCommand<object>(args => ShowSelectedView(), args => true);
-			RelayCommand<object> closeCommand = new RelayCommand<object>(args => Closing(), args => true);
+			RelayCommand<object> closeCommand = new RelayCommand<object>(args => { interrogator.Stop(); Closing(); }, args => true);
 				
 			uiThread = new Thread(() => {
 				viewModel = new MainViewModel(context, changeContextCommand, changeContextCommand, changeContextCommand, changeViewCommand, closeCommand);
 				MainForm mainForm = new MainForm { DataContext = viewModel };
-				mainForm.Show();
-				Dispatcher.Run();
+				try{
+					mainForm.ShowDialog();
+				} finally{
+					mainForm.Close();
+				}		
 			}) {IsBackground = true};
 
-			
 			uiThread.SetApartmentState(ApartmentState.STA);
 			uiThread.Start();
 			interrogator.Start();

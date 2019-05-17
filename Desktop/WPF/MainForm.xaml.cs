@@ -21,5 +21,10 @@ namespace Desktop.WPF
 			TestCaseDescription itemClicked = (TestCaseDescription) ((ListViewItem) sender).Content;
 			Process.Start(itemClicked.Url);
 		}
+
+		private void Button_Minimize(object sender, RoutedEventArgs e)
+		{
+			this.WindowState = WindowState.Minimized;
+		}
 	}
 }
