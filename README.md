@@ -2,8 +2,8 @@
 
 # TFSPeekerDesktop
 
-This is a desktop console version of a tool which is able to look into MTM test suites and plans to display them in various other views , such as all the unassigned cases etc. This is a C# project , so just download the solution and compile as per usual.
-It comes with some bundled views which are defined in TestCaseViewFactory.GetView(name) method. Examples should be easy enough to work out how to create your own views. Now the tool can also be configured via a JSON file so you don't have to provide the console arguments all the time. Just place a config.json file next to the executable. The following is the configuration format:
+This is a WPF Desktop & Console version of a tool which is able to look into MTM test suites and plans to display them in various other views , such as all the unassigned cases etc. This is a C# project , so just download the solution and compile as per usual.
+It comes with some bundled views which are defined in ViewResultBuilder.BuildResult(dataset, name, keyword) method. Examples should be easy enough to work out how to create your own views. Now the tool can also be configured via a JSON file so you don't have to provide the arguments all the time. Just place a config.json file next to the executable. The following is the configuration format:
 
      {   
     	 "tfsUrl":"https://some-url-to-tfs.com/DefaultCollection",  
