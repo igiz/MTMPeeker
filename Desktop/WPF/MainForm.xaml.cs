@@ -26,5 +26,10 @@ namespace Desktop.WPF
 		{
 			this.WindowState = WindowState.Minimized;
 		}
+
+		private void DockPanel_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			this.DragMove();
+		}
 	}
 }

@@ -6,11 +6,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d"
-             Title="TFSPeeker - A way to forget MTM" Height="600" Width="900"
+             Title="TFSPeeker - A way to forget MTM" Height="720" Width="1080"
              WindowStyle="None"
              AllowsTransparency="False"
              Icon="../Resources/icon.png"
-             IsHitTestVisible="True" ResizeMode="NoResize"
+             IsHitTestVisible="True" 
+             ResizeMode="NoResize"
 >
 
     <i:Interaction.Triggers>
@@ -64,7 +65,7 @@
 
     </Window.Resources>
 
-    <DockPanel Margin="5">
+    <DockPanel Margin="5" MouseDown="DockPanel_MouseDown">
         <StackPanel DockPanel.Dock="Top">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -75,8 +76,8 @@
                 <Image VerticalAlignment="Top" HorizontalAlignment="Left" Source="../Resources/icon.png" Width="25" Height="25"/>
                 <Label Grid.Row="0" Grid.Column="1" Background="Transparent" Foreground="White" Content="{Binding Title, ElementName=mainWindow}"/>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="2">
-                    <Button FontWeight="ExtraBlack" BorderBrush="White" Background="LightBlue" Width="60" Content="-" Margin="5" Click="Button_Minimize" />
-                    <Button FontWeight="ExtraBlack" BorderBrush="White" Background="DarkRed" Width="60" Content="x" Margin="5" Command="{Binding Path=Close}"/>
+                    <Button FontWeight="ExtraBlack" BorderBrush="White" Background="LightBlue" Width="60" Content="-" Margin="2" Click="Button_Minimize" />
+                    <Button FontWeight="ExtraBlack" BorderBrush="White" Background="OrangeRed" Width="60" Content="x" Margin="2" Command="{Binding Path=Close}"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -119,7 +120,14 @@
                 </TextBox.InputBindings>
             </TextBox>
             <StackPanel Grid.Row="0" Grid.Column="6" Margin="15,5,5,5">
-                <ComboBox Name="cbxViewType" ItemsSource="{Binding ViewTypes}" SelectedItem="{Binding CurrentViewType}" />
+                <ComboBox Foreground="DarkSlateGray" Background="DarkSlateBlue" FontSize="12" FontWeight="ExtraBlack" Name="cbxViewType" ItemsSource="{Binding ViewTypes}" SelectedItem="{Binding CurrentViewType}" >
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                </ComboBox>
             </StackPanel>
             <Label Grid.Row="0" Grid.Column="7" Content="Auto-refresh:" HorizontalContentAlignment="Center"/>
             <CheckBox Grid.Row="0" Grid.Column="8" Name="chkbxRefresh" IsChecked="{Binding AutoRefresh}" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="false"/>
