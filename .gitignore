@@ -3,3 +3,7 @@
 packages
 TFSPeekerDesktop/bin
 TFSPeekerDesktop/obj
+Console/bin/Debug
+Console/obj/Debug
+Desktop/bin/Debug
+Desktop/obj/Debug

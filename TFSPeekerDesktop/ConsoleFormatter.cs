@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TFSPeekerDesktop
+namespace TFSPeeker
 {
 	public class ConsoleFormatter : IDisposable
 	{

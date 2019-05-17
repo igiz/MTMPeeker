@@ -1,4 +1,4 @@
-﻿namespace TFSPeekerDesktop
+﻿namespace TFSPeeker
 {
 	public class ConfigurationConstants
 	{

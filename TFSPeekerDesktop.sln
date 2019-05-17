@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSPeekerDesktop", "TFSPeekerDesktop\TFSPeekerDesktop.csproj", "{7F8AA065-598C-48CD-B736-4DA72D3450D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSPeeker", "TFSPeekerDesktop\TFSPeeker.csproj", "{7F8AA065-598C-48CD-B736-4DA72D3450D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop", "Desktop\Desktop.csproj", "{D386DED7-56E6-4737-8D03-BA1CD4261BB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{9A587E2F-B78A-4EE9-AEA9-DC16D723BB0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7F8AA065-598C-48CD-B736-4DA72D3450D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F8AA065-598C-48CD-B736-4DA72D3450D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F8AA065-598C-48CD-B736-4DA72D3450D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D386DED7-56E6-4737-8D03-BA1CD4261BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D386DED7-56E6-4737-8D03-BA1CD4261BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D386DED7-56E6-4737-8D03-BA1CD4261BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D386DED7-56E6-4737-8D03-BA1CD4261BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A587E2F-B78A-4EE9-AEA9-DC16D723BB0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A587E2F-B78A-4EE9-AEA9-DC16D723BB0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A587E2F-B78A-4EE9-AEA9-DC16D723BB0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A587E2F-B78A-4EE9-AEA9-DC16D723BB0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using TFSPeeker.Interrogation;
+using SystemConsole = System.Console;
 
-namespace TFSPeekerDesktop.Views
+namespace Console.Views
 {
 	public class View : IView
 	{
 
 		private readonly IDictionary<string, Func<TestCaseDescription, string>> tokenToResolver = new Dictionary<string, Func<TestCaseDescription, string>> {
-			{"{caseId}", point => point.Info.TestCaseId.ToString()},
-			{"{caseTitle}" , point => point.Info.TestCaseWorkItem.Title},
-			{"{caseState}", point => point.Info.State.ToString()},
+			{"{caseId}", point => point.Id.ToString()},
+			{"{caseTitle}" , point => point.Title},
+			{"{caseState}", point => point.State},
 			{"{url}", point => point.Url}
 		};
 
@@ -39,7 +41,7 @@ namespace TFSPeekerDesktop.Views
 						displayResult = displayResult.Replace(token.Key, token.Value(testPoint));
 					}
 
-					Console.WriteLine(displayResult);
+					SystemConsole.WriteLine(displayResult);
 				}
 			}
 		}
