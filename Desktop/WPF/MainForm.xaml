@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Title="TFSPeeker - A way to forget MTM (┛◉Д◉)┛彡┻━┻" Height="720" Width="1080"
+             Title="TFSPeeker - A way to forget MTM" Height="720" Width="1080"
              WindowStyle="None"
+             Icon="../Resources/icon-window.png"
              AllowsTransparency="False"
-             Icon="../Resources/icon.png"
              IsHitTestVisible="True" 
              ResizeMode="NoResize">
     
@@ -22,10 +22,36 @@
 
     <Window.Resources>
 
+        <ControlTemplate x:Key="CustomToggleButton" TargetType="ToggleButton">
+            <Grid>
+                <Border Name="Border" />
+                <Border Name="SmallBorder" />
+                <Path Name="Arrow" />
+            </Grid>
+        </ControlTemplate>
+
+        <Style x:Key="comboBoxItemStyle" TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border x:Name="Bd" Background="DarkSlateGray" BorderBrush="Black" BorderThickness="1">
+                            <Label FontSize="12" HorizontalContentAlignment="Center" Content="{Binding}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="gridViewColumnHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
             <Setter Property="Background" Value="LightBlue" />
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="BorderBrush" Value="Black"/>
         </Style>
 
         <Style x:Key="listViewStyle" TargetType="{x:Type ListView}">
@@ -58,15 +84,18 @@
     </Window.Resources>
 
     <DockPanel Margin="5" MouseDown="DockPanel_MouseDown">
-        <StackPanel DockPanel.Dock="Top">
+        <StackPanel Background="Transparent" DockPanel.Dock="Top">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.1*"/>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="0.4*"/>
                 </Grid.ColumnDefinitions>
-                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Source="../Resources/icon.png" Width="25" Height="25"/>
-                <Label Grid.Row="0" Grid.Column="1" Background="Transparent" Foreground="White" Content="{Binding Title, ElementName=mainWindow}"/>
+                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Source="../Resources/icon-main.png" Width="25" Height="25"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                    <Label Background="Transparent" Foreground="Yellow" Content="(-(-_(-_-)_-)-)"/>
+                    <Label Background="Transparent" Foreground="White" Content="{Binding Title, ElementName=mainWindow}"/>
+                </StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="2">
                     <Button FontWeight="ExtraBlack" BorderBrush="White" Background="LightBlue" Width="60" Content="-" Margin="2" Click="Button_Minimize" />
                     <Button FontWeight="ExtraBlack" BorderBrush="White" Background="OrangeRed" Width="60" Content="x" Margin="2" Command="{Binding Path=Close}"/>
@@ -114,10 +143,7 @@
             <StackPanel Grid.Row="0" Grid.Column="6" Margin="15,5,5,5">
                 <ComboBox Foreground="DarkSlateGray" Background="DarkSlateBlue" FontSize="12" FontWeight="ExtraBlack" Name="cbxViewType" ItemsSource="{Binding ViewTypes}" SelectedItem="{Binding CurrentViewType}" >
                     <ComboBox.ItemContainerStyle>
-                        <Style TargetType="ComboBoxItem">
-                            <Setter Property="BorderBrush" Value="Black"/>
-                            <Setter Property="BorderThickness" Value="1"/>
-                        </Style>
+                        <Style BasedOn="{StaticResource comboBoxItemStyle}" TargetType="{x:Type ComboBoxItem}"/>
                     </ComboBox.ItemContainerStyle>
                 </ComboBox>
             </StackPanel>
@@ -126,10 +152,21 @@
         </Grid>
         <ListView ItemsSource="{Binding TestCases}" Margin="3" Name="lvTestCases" >
             <ListView.Resources>
-                <Style BasedOn="{StaticResource listViewStyle}" TargetType="{x:Type ListView}" />
                 <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Background" Value="Black" />
+                            <Setter Property="BorderBrush" Value="LightBlue" />
+                            <Setter Property="FontWeight" Value="Medium"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="DarkSlateGray" />
+                        </Trigger>
+                    </Style.Triggers>
                     <EventSetter Event="MouseDoubleClick" Handler="HandleDoubleClick" />
                 </Style>
+
+                <Style BasedOn="{StaticResource listViewStyle}" TargetType="{x:Type ListView}" />
             </ListView.Resources>
             <ListView.View>
                 <GridView>
@@ -138,8 +175,8 @@
                     </GridView.ColumnHeaderContainerStyle>
                     <GridViewColumn Header="Id" Width="70" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="State" Width="70" DisplayMemberBinding="{Binding State}" />
-                    <GridViewColumn Header="Title" Width="450" DisplayMemberBinding="{Binding Title}" />
-                    <GridViewColumn Header="Url" Width="280" DisplayMemberBinding="{Binding Url}" />
+                    <GridViewColumn Header="Title" Width="690" DisplayMemberBinding="{Binding Title}" />
+                    <GridViewColumn Header="Path" Width="224" DisplayMemberBinding="{Binding Path}" />
                 </GridView>
             </ListView.View>
         </ListView>

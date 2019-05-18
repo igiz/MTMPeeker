@@ -10,7 +10,9 @@ namespace TFSPeeker.Interrogation
 
 		private readonly IList<IObserver<DataSet>> subscribers = new List<IObserver<DataSet>>();
 
-		private readonly string TestCaseUrlBase = "{0}/{1}/_testmanagement?planId={2}&suiteId={3}";
+		private readonly string TestCaseUrlBase = "{0}/{1}/_testmanagement?{2}";
+
+		private readonly string TestCasePath = "planId={0}&suiteId={1}";
 
 		private DataSet dataSet = new DataSet();
 
@@ -25,8 +27,9 @@ namespace TFSPeeker.Interrogation
 
 			foreach (ITestPoint item in testPlanPoints) {
 				int priority = item.TestCaseWorkItem.Priority;
-				string testCaseUrl = string.Format(TestCaseUrlBase, tfsUrl, project, item.Plan.Id, item.SuiteId);
-				TestCaseDescription testCaseDescription = new TestCaseDescription(item, testCaseUrl);
+				string testCasePath = string.Format(TestCasePath, item.Plan.Id, item.SuiteId);
+				string testCaseUrl = string.Format(TestCaseUrlBase, tfsUrl, project, testCasePath);
+				TestCaseDescription testCaseDescription = new TestCaseDescription(item, testCaseUrl, testCasePath);
 
 				dataSet.AddCasePriority(priority, testCaseDescription);
 

@@ -12,12 +12,15 @@ namespace TFSPeeker.Interrogation
 
 		public string Url { get; }
 
-		public TestCaseDescription(ITestPoint info, string url)
+		public string Path { get; }
+
+		public TestCaseDescription(ITestPoint info, string url, string path)
 		{
 			Id = info.TestCaseId;
 			Title = info.TestCaseWorkItem.Title;
 			State = info.State.ToString();
 			Url = url;
+			Path = path;
 		}
 	}
 }
