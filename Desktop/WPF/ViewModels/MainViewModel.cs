@@ -109,6 +109,11 @@ namespace Desktop.WPF.ViewModels
 			}
 		}
 
+		public int Total
+		{
+			get => TestCases.Count;
+		}
+
 		public ObservableCollection<TestCaseDescription> TestCases
 		{
 			get => testCases;
@@ -117,6 +122,7 @@ namespace Desktop.WPF.ViewModels
 				if (testCases != value) {
 					testCases = value;
 					OnPropertyChanged(() => TestCases);
+					OnPropertyChanged(() => Total);
 				}
 			}
 		}
@@ -163,10 +169,11 @@ namespace Desktop.WPF.ViewModels
 		{
 			Dispatch(() => {
 				currentViewType = viewResult.Name;
-				testCases.Clear();
+				testCases.Clear();		
 				foreach (var testCaseDescription in viewResult.Result) {
 					testCases.Add(testCaseDescription);
 				}
+				OnPropertyChanged(() => Total);
 			});
 		}
 

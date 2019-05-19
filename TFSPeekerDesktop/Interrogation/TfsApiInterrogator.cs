@@ -77,8 +77,7 @@ namespace TFSPeeker.Interrogation
 
 						lock (handle) {
 							using (TfsTeamProjectCollection tfs = new TfsTeamProjectCollection(new Uri(context.ApiUrl))) {
-								ITestManagementService service =
-									tfs.GetService(typeof(ITestManagementService)) as ITestManagementService;
+								ITestManagementService service = tfs.GetService(typeof(ITestManagementService)) as ITestManagementService;
 								ITestManagementTeamProject testProject = service.GetTeamProject(context.Project);
 
 								//Can extract information about the test suite from here

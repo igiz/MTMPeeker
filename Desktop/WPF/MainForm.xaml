@@ -95,6 +95,8 @@
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
                     <Label Background="Transparent" Foreground="Yellow" Content="(-(-_(-_-)_-)-)"/>
                     <Label Background="Transparent" Foreground="White" Content="{Binding Title, ElementName=mainWindow}"/>
+                    <Label Background="Transparent" Foreground="Yellow" Content="Total shown:"/>
+                    <Label Background="Transparent" Foreground="White" FontWeight="Bold" Content="{Binding Total}"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="2">
                     <Button FontWeight="ExtraBlack" BorderBrush="White" Background="LightBlue" Width="60" Content="-" Margin="2" Click="Button_Minimize" />
@@ -173,10 +175,17 @@
                     <GridView.ColumnHeaderContainerStyle>
                         <Style BasedOn="{StaticResource gridViewColumnHeaderStyle}" TargetType="{x:Type GridViewColumnHeader}"/>
                     </GridView.ColumnHeaderContainerStyle>
-                    <GridViewColumn Header="Id" Width="70" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Id" Width="50" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="State" Width="70" DisplayMemberBinding="{Binding State}" />
+                    <GridViewColumn Header="Assigned To" Width="130">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding AssignedTo}" FontWeight="Medium" Foreground="Yellow"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Title" Width="690" DisplayMemberBinding="{Binding Title}" />
-                    <GridViewColumn Header="Path" Width="224" DisplayMemberBinding="{Binding Path}" />
+                    <GridViewColumn Header="Path" Width="90" DisplayMemberBinding="{Binding Path}" />
                 </GridView>
             </ListView.View>
         </ListView>

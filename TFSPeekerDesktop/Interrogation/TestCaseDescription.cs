@@ -10,6 +10,8 @@ namespace TFSPeeker.Interrogation
 
 		public string State { get; }
 
+		public string AssignedTo { get; }
+
 		public string Url { get; }
 
 		public string Path { get; }
@@ -19,6 +21,7 @@ namespace TFSPeeker.Interrogation
 			Id = info.TestCaseId;
 			Title = info.TestCaseWorkItem.Title;
 			State = info.State.ToString();
+			AssignedTo = info.AssignedTo.DisplayName;
 			Url = url;
 			Path = path;
 		}
