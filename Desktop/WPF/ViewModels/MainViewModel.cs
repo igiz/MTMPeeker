@@ -20,6 +20,8 @@ namespace Desktop.WPF.ViewModels
 
 		private bool autoRefresh;
 
+		private DateTime lastRefresh;
+
 		private ObservableCollection<string> viewTypes;
 
 		private ObservableCollection<TestCaseDescription> testCases;
@@ -114,6 +116,16 @@ namespace Desktop.WPF.ViewModels
 			get => TestCases.Count;
 		}
 
+		public string LastRefresh
+		{
+			get => lastRefresh.ToShortTimeString();
+		}
+
+		public string CurrentUser
+		{
+			get => System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+		}
+
 		public ObservableCollection<TestCaseDescription> TestCases
 		{
 			get => testCases;
@@ -173,7 +185,9 @@ namespace Desktop.WPF.ViewModels
 				foreach (var testCaseDescription in viewResult.Result) {
 					testCases.Add(testCaseDescription);
 				}
+				lastRefresh = DateTime.Now;
 				OnPropertyChanged(() => Total);
+				OnPropertyChanged(() => LastRefresh);
 			});
 		}
 

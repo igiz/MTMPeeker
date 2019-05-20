@@ -97,6 +97,10 @@
                     <Label Background="Transparent" Foreground="White" Content="{Binding Title, ElementName=mainWindow}"/>
                     <Label Background="Transparent" Foreground="Yellow" Content="Total shown:"/>
                     <Label Background="Transparent" Foreground="White" FontWeight="Bold" Content="{Binding Total}"/>
+                    <Label Background="Transparent" Foreground="Yellow" Content="Last refresh:"/>
+                    <Label Background="Transparent" Foreground="White" FontWeight="Bold" Content="{Binding LastRefresh}"/>
+                    <Label Background="Transparent" Foreground="Yellow" Content="User:"/>
+                    <Label Background="Transparent" Foreground="White" FontWeight="Bold" Content="{Binding CurrentUser}"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="2">
                     <Button FontWeight="ExtraBlack" BorderBrush="White" Background="LightBlue" Width="60" Content="-" Margin="2" Click="Button_Minimize" />
